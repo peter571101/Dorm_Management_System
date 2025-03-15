@@ -11,7 +11,7 @@ def get_db_connection():
     return pymysql.connect(
         host='localhost',
         user='root',
-        password='gld131571314',
+        password='your_password',
         database='dorm_management',
         charset='utf8mb4',
         cursorclass=pymysql.cursors.DictCursor
@@ -23,7 +23,7 @@ def init_db():
     connection = pymysql.connect(
         host='localhost',
         user='root',
-        password='gld131571314',
+        password='your_password',
         charset='utf8mb4',
         cursorclass=pymysql.cursors.DictCursor
     )
@@ -45,9 +45,9 @@ def init_db():
                     student_id VARCHAR(20) PRIMARY KEY,
                     name VARCHAR(50) ,
                     password VARCHAR(100) ,
-                    id_card CHAR(18)  UNIQUE,      -- 新增身份证号（18位，唯一）
-                    gender CHAR(2)  CHECK (gender IN ('男', '女')),  -- 新增性别（M男/F女）
-                    s_class VARCHAR(50) ,           -- 新增班级（如 "计算机2023级1班"）
+                    id_card CHAR(18)  UNIQUE,    
+                    gender CHAR(2)  CHECK (gender IN ('男', '女')), 
+                    s_class VARCHAR(50) ,           
                     building_number VARCHAR(20),
                     building_name VARCHAR(50), 
                     room_number VARCHAR(20)
