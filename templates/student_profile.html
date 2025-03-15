@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* 内容区样式 */
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center; /* 内容居中 */
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+            padding: 5px 10px;
+            border-bottom: 1px solid #eee; /* 添加分割线 */
+        }
+
+        .content p:last-child {
+            border-bottom: none; /* 最后一项不加分割线 */
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .content {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>个人信息</h1>
+    <nav>
+        <a href="{{ url_for('student_home') }}">返回主页</a>
+    </nav>
+    <div class="content">
+        <p>学号: {{ student.student_id }}</p>
+        <p>姓名: {{ student.name }}</p>
+        <p>身份证号: {{ student.id_card }}</p>
+        <p>性别: {{ student.gender }}</p>
+        <p>班级: {{ student.s_class }}</p>
+        <p>楼宇名称: {{ student.building_name }}</p>
+        <p>宿舍楼号: {{ student.building_number }}</p>
+        <p>房间号: {{ student.room_number }}</p>
+    </div>
+</body>
+</html>

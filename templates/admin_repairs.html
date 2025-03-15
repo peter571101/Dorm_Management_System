@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>报修信息管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_repairs.css') }}">
+</head>
+<body>
+<h1>报修信息管理</h1>
+<nav>
+    <a href="{{ url_for('admin_home') }}">返回主页</a>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>楼号</th>
+        <th>房间号</th>
+        <th>报修描述</th>
+        <th>状态</th>
+        <th>回复</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for repair in repairs%}
+    <tr>
+        <td>{{ repair.student_id }}</td>
+        <td>{{ repair.name }}</td>
+        <td>{{ repair.building_name }}{{ repair.building_number }}栋</td> <!-- 楼号合并显示 -->
+        <td>{{ repair.room_number }}</td>
+        <td>{{ repair.description }}</td>
+        <td>{{ repair.status }}</td>
+        <td>{{ repair.response }}</td>
+        <td>
+            <form method="POST">
+                <input type="hidden" name="repair_id" value="{{ repair.id }}">
+                状态:
+                <select name="status">
+                    {% if repair.status == '待处理' %}
+                    <option value="待处理" selected>待处理</option>
+                    {% else %}
+                    <option value="待处理">待处理</option>
+                    {% endif %}
+                    {% if repair.status == '已处理' %}
+                    <option value="已处理" selected>已处理</option>
+                    {% else %}
+                    <option value="已处理">已处理</option>
+                    {% endif %}
+                </select>
+                回复: <textarea name="response">{{ repair.response }}</textarea>
+                <button type="submit">提交</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,125 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        table td form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center; /* 表单内容居中对齐 */
+        }
+
+        table td input, table td select, table td textarea {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%; /* 输入框宽度占满单元格 */
+        }
+
+        table td textarea {
+            resize: vertical;
+            min-height: 60px;
+            width: 90%; /* 调整宽度 */
+        }
+
+        table td button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        table td button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 列宽比例 */
+        table th:nth-child(1), table td:nth-child(1) { /* 学号 */
+            width: 10%;
+        }
+
+        table th:nth-child(2), table td:nth-child(2) { /* 姓名 */
+            width: 10%;
+        }
+
+        table th:nth-child(3), table td:nth-child(3) { /* 楼号 */
+            width: 15%;
+        }
+
+        table th:nth-child(4), table td:nth-child(4) { /* 房间号 */
+            width: 10%;
+        }
+
+        table th:nth-child(5), table td:nth-child(5) { /* 报修描述 */
+            width: 25%;
+            word-wrap: break-word; /* 超出长度换行 */
+            max-width: 200px; /* 最大宽度 */
+        }
+
+        table th:nth-child(6), table td:nth-child(6) { /* 状态 */
+            width: 10%;
+        }
+
+        table th:nth-child(7), table td:nth-child(7) { /* 回复 */
+            width: 10%;
+        }
+
+        table th:nth-child(8), table td:nth-child(8) { /* 操作 */
+            width: 10%;
+        }

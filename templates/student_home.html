@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生主页</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/student_home.css') }}">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <h1>学生主页</h1>
+        <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">退出登录</button>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <a href="{{ url_for('student_profile') }}">个人信息</a>
+        <a href="{{ url_for('student_repair') }}">个人报修</a>
+        <a href="{{ url_for('student_change_password') }}">修改密码</a>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <div class="welcome-message">
+            <h1>欢迎，{{ name }}！</h1>
+            <p>请从侧边栏选择功能模块，开始操作。</p>
+        </div>
+    </div>
+</body>
+</html>

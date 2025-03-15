@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>楼宇信息</title>
+<!--            <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_buildings.css') }}">-->
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        table td a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        table td a:hover {
+            text-decoration: underline;
+        }
+        table td a.update {
+            color: #28a745;
+            margin-left: 10px;
+        }
+        table td a.update:hover {
+            color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>楼宇信息</h1>
+    <nav>
+        <a href="{{ url_for('admin_home') }}">返回主页</a>
+        <a href="{{ url_for('admin_add_building') }}">增加楼宇</a>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>楼宇名称</th>
+                <th>楼宇编号</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for building in buildings %}
+            <tr>
+                <td>{{ building.building_name }}</td>
+                <td>{{ building.building_number }}</td>
+                <td>
+                    <a href="{{ url_for('admin_building_students', building_number=building.building_number, building_name=building.building_name) }}">查看学生</a>
+                    <a href="{{ url_for('admin_update_building', building_id=building.building_id) }}" class="update">更新</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+    </table>
+</body>
+</html>

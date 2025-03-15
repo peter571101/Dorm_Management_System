@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>增加楼宇</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            max-width: 300px;
+        }
+
+        form button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 10px;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 消息样式 */
+        .alert {
+            padding: 15px;
+            margin: 0 auto 20px auto; /* 水平居中 */
+            border-radius: 4px;
+            max-width: 400px; /* 与表单等宽 */
+            text-align: center; /* 内容居中 */
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+        .auto-redirect {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>增加楼宇</h1>
+    <nav>
+        <a href="{{ url_for('admin_buildings') }}">返回楼宇列表</a>
+    </nav>
+
+    <div class="container">
+        <!-- 消息显示区域 -->
+        {% if success %}
+        <div class="alert alert-success">
+            {{ success }}
+            <div class="auto-redirect">2秒后自动返回列表...</div>
+            <script>
+                setTimeout(() => {
+                    window.location.href = "{{ url_for('admin_buildings') }}";
+                }, 2000);
+            </script>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="alert alert-error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if warning %}
+        <div class="alert alert-warning">
+            {{ warning }}
+        </div>
+        {% endif %}
+
+        <!-- 表单 -->
+        <form method="POST">
+            <div class="input-group">
+                楼宇名称: <input type="text" name="building_name" required><br>
+                楼宇编号: <input type="text" name="building_number" required><br>
+                <button type="submit">提交</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

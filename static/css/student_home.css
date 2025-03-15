@@ -1,0 +1,113 @@
+
+        /* 全局样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0; /* 浅灰色背景 */
+        }
+
+        /* 顶部导航栏样式 */
+        .navbar {
+            background-color: #000; /* 黑色背景 */
+            color: #fff; /* 白色文字 */
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed; /* 固定在顶部 */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* 确保导航栏在最上层 */
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            flex: 1; /* 标题居中 */
+        }
+
+        .navbar .logout-btn {
+            background-color: #007bff; /* 蓝色按钮 */
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: button;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .logout-btn:hover {
+            background-color: #0056b3; /* 悬停效果 */
+        }
+
+        /* 侧边栏样式 */
+        .sidebar {
+            width: 200px;
+            background-color: #007bff; /* 蓝色背景 */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed; /* 固定在左侧 */
+            top: 60px; /* 与顶部导航栏的距离 */
+            bottom: 0;
+            left: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff; /* 白色文字 */
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #0056b3; /* 悬停效果 */
+        }
+
+        /* 主内容区样式 */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 200px; /* 与侧边栏的宽度一致 */
+            margin-top: 60px; /* 与顶部导航栏的高度一致 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* 欢迎信息样式 */
+        .welcome-message {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            position: relative; /* 相对定位 */
+            left: -115px; /* 向左移动 */
+        }
+
+        .welcome-message h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-message p {
+            color: #555;
+            font-size: 16px;
+        }

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>学生信息管理</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            word-wrap: break-word;
+        }
+
+        table th {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        table td .action-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        table td .update-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        table td input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: auto;
+            max-width: 100px;
+            text-align: center;
+        }
+
+        table td input[name="name"] {
+            width: 80px;
+        }
+
+        /* 性别下拉菜单样式 */
+        table td select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: auto;
+            max-width: 100px;
+            text-align: center;
+            height: 29px; /* 与其他输入框等高 */
+        }
+
+        table td button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        table td button:hover {
+            background-color: #0056b3;
+        }
+
+        table td .delete-form button {
+            background-color: #dc3545;
+        }
+
+        table td .delete-form button:hover {
+            background-color: #c82333;
+        }
+
+        /* 列宽比例 */
+        table th:nth-child(1), table td:nth-child(1) { /* 学号 */
+            width: 8%;
+        }
+
+        table th:nth-child(2), table td:nth-child(2) { /* 姓名 */
+            width: 8%;
+        }
+
+        table th:nth-child(3), table td:nth-child(3) { /* 身份证号 */
+            width: 12%;
+        }
+
+        table th:nth-child(4), table td:nth-child(4) { /* 性别 */
+            width: 5%;
+        }
+
+        table th:nth-child(5), table td:nth-child(5) { /* 班级 */
+            width: 8%;
+        }
+
+        table th:nth-child(6), table td:nth-child(6) { /* 楼宇编号 */
+            width: 8%;
+        }
+
+        table th:nth-child(7), table td:nth-child(7) { /* 楼宇名称 */
+            width: 8%;
+        }
+
+        table th:nth-child(8), table td:nth-child(8) { /* 房间号 */
+            width: 5%;
+        }
+
+        table th:nth-child(9), table td:nth-child(9) { /* 操作 */
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+<h1>学生信息管理</h1>
+<nav>
+    <a href="{{ url_for('admin_home') }}">返回主页</a>
+</nav>
+<table>
+    <thead>
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>身份证号</th>
+        <th>性别</th>
+        <th>班级</th>
+        <th>楼宇编号</th>
+        <th>楼宇名称</th>
+        <th>房间号</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for student in students %}
+    <tr>
+        <td>{{ student.student_id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.id_card }}</td>
+        <td>{{ student.gender }}</td>
+        <td>{{ student.s_class }}</td>
+        <td>{{ student.building_number }}</td>
+        <td>{{ student.building_name }}</td>
+        <td>{{ student.room_number }}</td>
+        <td>
+            <div class="action-container">
+                <form method="POST" class="update-form">
+                    <input type="hidden" name="student_id" value="{{ student.student_id }}">
+                    <input type="hidden" name="action" value="update">
+                    <div>
+                        姓名: <input type="text" name="name" value="{{ student.name }}" maxlength="7" required>
+                    </div>
+                    <div>
+                        身份证号: <input type="text" name="id_card" value="{{ student.id_card }}" maxlength="18"
+                                         required>
+                    </div>
+                    <div>
+                        性别:
+                        <select name="gender" required>
+                            {% if student.gender == '男' %}
+                            <option value="男" selected>男</option>
+                            {% else %}
+                            <option value="男">男</option>
+                            {% endif %}
+                            {% if student.gender == '女' %}
+                            <option value="女" selected>女</option>
+                            {% else %}
+                            <option value="女">女</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div>
+                        班级: <input type="text" name="s_class" value="{{ student.s_class }}" maxlength="20" required>
+                    </div>
+                    <div>
+                        楼宇编号: <input type="text" name="building_number" value="{{ student.building_number }}"
+                                         maxlength="3" required>
+                    </div>
+                    <div>
+                        楼宇名称: <input type="text" name="building_name" value="{{ student.building_name }}"
+                                         maxlength="5" required>
+                    </div>
+                    <div>
+                        房间号: <input type="text" name="room_number" value="{{ student.room_number }}" maxlength="4"
+                                       required>
+                    </div>
+                    <button type="submit">更新</button>
+                </form>
+                <form method="POST" class="delete-form">
+                    <input type="hidden" name="student_id" value="{{ student.student_id }}">
+                    <input type="hidden" name="action" value="delete">
+                    <button type="submit">删除</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ building.building_name }}{{ building.building_number }}栋 学生信息</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_building_students.css') }}">
+</head>
+<body>
+    <h1>{{ building.building_name }} {{ building.building_number }} 学生信息</h1>
+    <nav>
+        <a href="{{ url_for('admin_buildings') }}">返回楼宇列表</a>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>房间号</th>
+                <th>学生姓名</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.room_number }}</td>
+                <td>{{ student.students }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>登录</h1>
+        <form method="POST">
+            <div class="form-group">
+                <input type="text" name="user_id" placeholder="学号/管理员号" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="密码" required>
+            </div>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="user_type" value="student" checked> 学生
+                </label>
+                <label>
+                    <input type="radio" name="user_type" value="admin"> 管理员
+                </label>
+            </div>
+            <button type="submit">登录</button>
+        </form>
+        <p class="link">没有账号？<a href="{{ url_for('register') }}">注册</a></p>
+        <div class="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

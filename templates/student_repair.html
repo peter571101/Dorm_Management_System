@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人报修</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/student_repair.css') }}">
+</head>
+<body>
+    <h1>个人报修</h1>
+    <nav>
+        <a href="{{ url_for('student_home') }}">返回主页</a>
+    </nav>
+
+    <!-- 消息区域 -->
+    <div class="message" id="successMessage">报修提交成功！</div>
+
+    <!-- 报修表单 -->
+    <form id="repairForm" method="POST">
+        <textarea name="description" placeholder="请输入报修描述" required></textarea><br>
+        <button type="submit">提交报修</button>
+    </form>
+</body>
+</html>

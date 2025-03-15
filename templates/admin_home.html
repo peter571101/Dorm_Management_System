@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿管系统</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_home.css') }}">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <h1>宿舍管理系统</h1>
+        <button class="logout-btn" onclick="window.location.href='{{ url_for('logout') }}'">退出登录</button>
+    </div>
+
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <a href="{{ url_for('admin_buildings') }}">楼宇信息</a>
+        <a href="{{ url_for('admin_students') }}">学生信息</a>
+        <a href="{{ url_for('admin_repairs') }}">报修信息</a>
+        <a href="{{ url_for('admin_change_password') }}">修改密码</a>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <div class="welcome-message">
+            <h1>欢迎使用宿管系统</h1>
+            <p>请从侧边栏选择功能模块，开始管理操作。</p>
+        </div>
+    </div>
+</body>
+</html>

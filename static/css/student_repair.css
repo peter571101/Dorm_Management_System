@@ -1,0 +1,90 @@
+        /* 全局样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* 浅灰色背景 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff; /* 蓝色文字 */
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline; /* 悬停效果 */
+        }
+
+        /* 标题样式 */
+        h1 {
+            color: #333; /* 深灰色文字 */
+            margin-bottom: 20px;
+        }
+
+        /* 表单样式 */
+        form {
+            background-color: #fff; /* 白色背景 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* 输入框样式 */
+        form textarea {
+            width: 90%; /* 宽度为父容器的 90% */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: vertical; /* 允许垂直调整大小 */
+            min-height: 150px; /* 最小高度 */
+            margin-bottom: 10px;
+            margin-left: auto; /* 水平居中 */
+            margin-right: auto; /* 水平居中 */
+            display: block; /* 块级元素 */
+        }
+
+        /* 按钮样式 */
+        form button {
+            padding: 10px 20px;
+            background-color: #007bff; /* 蓝色按钮 */
+            color: #fff; /* 白色文字 */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #0056b3; /* 悬停效果 */
+        }
+
+        /* 消息样式 */
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #d4edda; /* 浅绿色背景 */
+            color: #155724; /* 深绿色文字 */
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            display: none; /* 默认隐藏 */
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
